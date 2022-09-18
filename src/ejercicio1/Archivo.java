@@ -6,6 +6,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeSet;
 
 public class Archivo {
 
@@ -106,6 +109,40 @@ public class Archivo {
 		} catch (IOException e) {
 			System.out.println("No se encontro el archivo");
 		}
+	}
+	
+	public List devolverlista() {
+		FileReader entrada;
+		List<Persona> listaPersonas = new ArrayList<Persona>();
+		try {
+			entrada = new FileReader(ruta);
+			BufferedReader miBuffer = new BufferedReader(entrada);
+			
+		   String linea = "";
+			while (linea != null) {
+				linea = miBuffer.readLine();
+				if(linea!=null)
+				{
+					try {
+						String [] vectorPersona = linea.split("[-]");
+						Persona p = new Persona( vectorPersona[0],vectorPersona[1],vectorPersona[2]);
+						if(p.getDni()!=0)
+						listaPersonas.add(p);
+					}
+					catch(ArrayIndexOutOfBoundsException e)
+					{
+						
+					}
+					
+				}
+			}
+			miBuffer.close();
+			entrada.close();
+
+		} catch (IOException e) {
+			System.out.println("No se encontro el archivo");
+		}
+		return listaPersonas;
 	}
 	public String getRuta() {
 		return ruta;
