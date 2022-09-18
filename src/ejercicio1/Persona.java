@@ -3,12 +3,32 @@ import java.io.IOException;
 
 import javax.swing.*;
 
-public class Persona Comparable<Persona>{
+public class Persona implements Comparable<Persona> {
     private int dni;
 	private String nombre;
     private String apellido;
-    
-    
+
+	public int getDni() {
+			return dni;
+			}
+
+	public void setDni(int dni) {
+			this.dni = dni;
+			}
+
+	//MÉTODO QUE VERIFICA QUE EL DNI SOLO CONTENGA NÚMEROS
+	public static boolean validarDNI(String entrada) throws DniInvalido {
+		Integer.parseInt(entrada);
+		return true;
+	}
+
+	public Persona(){  }
+
+	public Persona(String nombre,String apellido,String dni) throws DniInvalido {
+		this.apellido = apellido;
+		this.nombre = nombre;
+		if(validarDNI(dni)) this.dni = Integer.parseInt(dni);
+	}
     
     public String getNombre() {
 		return nombre;
@@ -26,38 +46,10 @@ public class Persona Comparable<Persona>{
 		this.apellido = apellido;
 	}
 
-
-
-    public Persona(){  }
-    public Persona(String nombre,String apellido,String dni){
-    	this.apellido= apellido;
-    	this.nombre = nombre;
-    	if(validarDNI(dni))
-        this.dni = Integer.parseInt(dni);
-    }
-    public int getDni() {
-        return dni;
-    }
-
-    public void setDni(int dni) {
-        this.dni = dni;
-    }
-
-    //MÉTODO QUE VERIFICA QUE EL DNI SOLO CONTENGA NÚMEROS
-    public static boolean validarDNI(String entrada) throws DniInvalido {
-        try{
-        	Integer.parseInt(entrada);
-        	return true;
-        }catch(NumberFormatException e) {
-        	throw new DniInvalido(); 
-        }
-		
-    }
     @Override
 	public String toString() {
 		return nombre + " " + apellido + ", Dni=" + dni;
 	}
-
 
 	@Override
 	public int compareTo(Persona o) {
@@ -78,7 +70,6 @@ public class Persona Comparable<Persona>{
 	public int hashCode() {
 		return dni+31;
 	}
-	
 	
 	public boolean equals(Object obj)
 	{

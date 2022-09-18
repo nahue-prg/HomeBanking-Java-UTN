@@ -17,25 +17,19 @@ public class Principal {
         // Si está ok lo pasa a int, lo setea y muestra. Sino muestra cartel de error.
         Persona persona = new Persona();
 
-          List<Persona> listaPersonas = new ArrayList<Persona>();
-         String dni = JOptionPane.showInputDialog("Ingrese DNI: ");
-         
-         try {
+		String dni = JOptionPane.showInputDialog("Ingrese DNI: ");
+
+		try {
 			if ( Persona.validarDNI(dni) ) {
 			    persona.setDni(Integer.parseInt(dni));
 			    System.out.println(persona.getDni());
 			}
 		} catch (DniInvalido e) {
-			// TODO Auto-generated catch block
 			System.out.println("El dni no es valido!");
-		} 
+		}
 
-        if ( Persona.validarDNI(dni) ) {
-            persona.setDni(Integer.parseInt(dni));
-            System.out.println(persona.getDni());
-        }
-        
-        
+
+		List<Persona> listaPersonas = new ArrayList<Persona>();
         Archivo archivo = new Archivo();
 		archivo.setRuta("Personas.txt");
 		
@@ -56,6 +50,5 @@ public class Principal {
         {
         	System.out.println(x.toString());
         }
-
     }
 }
