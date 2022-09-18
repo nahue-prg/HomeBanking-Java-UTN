@@ -109,7 +109,7 @@ public class Archivo {
 		}
 	}
 	
-	public List devolverlista() {
+	public List<Persona> devolverlista() {
 		FileReader entrada;
 		List<Persona> listaPersonas = new ArrayList<Persona>();
 		try {

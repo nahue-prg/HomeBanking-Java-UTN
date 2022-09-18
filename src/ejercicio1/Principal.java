@@ -47,10 +47,12 @@ public class Principal {
 		}
 
 		Collections.sort(listaPersonas,new SortApellidos());
-		
+        //Punto C: punto 2 y pasar la información a un archivo llamado Resultado.txt
         for(Persona x : listaPersonas)
         {
         	System.out.println(x.toString());
+        	archivo.setRuta("./PuntoC.txt");
+        	archivo.escribe_lineas(x.toString()+ "\n");
         }
     }
 }
