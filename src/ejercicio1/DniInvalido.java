@@ -8,6 +8,7 @@ public class DniInvalido extends IOException{
 
     @Override
     public String getMessage() {
-        return "El DNI solo debe llevar numeros.";
+        return "El DNI solo debe llevar numeros...";
+        
     }
 }
