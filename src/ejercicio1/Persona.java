@@ -1,6 +1,9 @@
 package ejercicio1;
+import java.io.IOException;
 
-public class Persona implements Comparable<Persona>{
+import javax.swing.*;
+
+public class Persona Comparable<Persona>{
     private int dni;
 	private String nombre;
     private String apellido;
@@ -42,13 +45,13 @@ public class Persona implements Comparable<Persona>{
 
     //MÉTODO QUE VERIFICA QUE EL DNI SOLO CONTENGA NÚMEROS
     public static boolean validarDNI(String entrada) throws DniInvalido {
-        try {
-            Integer.parseInt(entrada);
-            return true;
-        } catch (NumberFormatException e) {
-             System.out.println(new DniInvalido());
-             return false;
+        try{
+        	Integer.parseInt(entrada);
+        	return true;
+        }catch(NumberFormatException e) {
+        	throw new DniInvalido(); 
         }
+		
     }
     @Override
 	public String toString() {
