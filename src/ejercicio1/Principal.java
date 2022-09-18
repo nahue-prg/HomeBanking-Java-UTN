@@ -3,9 +3,6 @@ package ejercicio1;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.TreeSet;
-import java.io.IOException;
-
 import javax.swing.*;
 
 
@@ -13,10 +10,13 @@ public class Principal {
 
     public static void main(String[] args) {
 
+		/*             PARTE A     */
         //Instancia Persona, pide DNI y lo valida.
         // Si está ok lo pasa a int, lo setea y muestra. Sino muestra cartel de error.
-        Persona persona = new Persona();
 
+		System.out.println("Punto A: Validación de DNI: ");
+
+        Persona persona = new Persona();
 		String dni = JOptionPane.showInputDialog("Ingrese DNI: ");
 
 		try {
@@ -25,25 +25,27 @@ public class Principal {
 			    System.out.println(persona.getDni());
 			}
 		} catch (DniInvalido e) {
-			System.out.println("El dni no es valido!");
+			e.printStackTrace();
+			//System.out.println("El dni no es valido!");
 		}
 
+
+		/*             PARTE B     */
+		System.out.println(" \n ---------------------------------- \n");
+		System.out.println("Punto B: Lee archivo Personas.txt y lo pasa a una lista sin duplicados y ordenado: \n");
 
 		List<Persona> listaPersonas = new ArrayList<Persona>();
         Archivo archivo = new Archivo();
-		archivo.setRuta("Personas.txt");
-		
-		if(archivo.existe())
-		{	
-			///archivo.lee_lineas();
-			
+		archivo.setRuta("./Personas.txt");
+
+		if(archivo.existe()) {
+
 			listaPersonas = archivo.devolverlista();
-		}
-		else
-		{
+
+		} else {
 			System.out.println("No existe archivo");
-			///archivo.creaArchivo();
 		}
+
 		Collections.sort(listaPersonas,new SortApellidos());
 		
         for(Persona x : listaPersonas)

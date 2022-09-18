@@ -18,8 +18,12 @@ public class Persona implements Comparable<Persona> {
 
 	//MÉTODO QUE VERIFICA QUE EL DNI SOLO CONTENGA NÚMEROS
 	public static boolean validarDNI(String entrada) throws DniInvalido {
-		Integer.parseInt(entrada);
-		return true;
+		try {
+			Integer.parseInt(entrada);
+			return true;
+		} catch (NumberFormatException e) {
+			throw new DniInvalido();
+		}
 	}
 
 	public Persona(){  }
@@ -53,17 +57,17 @@ public class Persona implements Comparable<Persona> {
 
 	@Override
 	public int compareTo(Persona o) {
-	
+
 		//ORDENAMIENTO por DNI de > a <
 		if(o.dni == this.dni)
 			return 0;
-		
+
 		if (o.dni<this.dni)
 		{
 			return 1;
-		}		
+		}
 		return -1;
-		
+
 	}
 
 	@Override
