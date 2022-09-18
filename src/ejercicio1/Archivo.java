@@ -126,7 +126,7 @@ public class Archivo {
 					try {
 						String [] vectorPersona = linea.split("[-]");
 						Persona p = new Persona( vectorPersona[0],vectorPersona[1],vectorPersona[2]);
-						if(p.getDni()!=0)
+						if(p.getDni()!=0 && !listaPersonas.contains(p))
 						listaPersonas.add(p);
 					}
 					catch(ArrayIndexOutOfBoundsException e)
