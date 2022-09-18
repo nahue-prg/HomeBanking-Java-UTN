@@ -20,9 +20,8 @@ public class Persona {
         try {
             Integer.parseInt(entrada);
             return true;
-        } catch (DniInvalido e) {
+        } catch (NumberFormatException e) {
             throw new DniInvalido();
         }
     }
-
 }
