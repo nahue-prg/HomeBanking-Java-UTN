@@ -1,5 +1,7 @@
 package ejercicio1;
 
+import java.io.IOException;
+
 import javax.swing.*;
 
 public class Persona {
@@ -17,12 +19,13 @@ public class Persona {
 
     //MÉTODO QUE VERIFICA QUE EL DNI SOLO CONTENGA NÚMEROS
     public static boolean validarDNI(String entrada) throws DniInvalido {
-        try {
-            Integer.parseInt(entrada);
-            return true;
-        } catch (DniInvalido e) {
-            throw new DniInvalido();
+        try{
+        	Integer.parseInt(entrada);
+        	return true;
+        }catch(NumberFormatException e) {
+        	throw new DniInvalido(); 
         }
+		
     }
 
 }

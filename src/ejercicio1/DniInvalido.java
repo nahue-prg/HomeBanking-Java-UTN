@@ -1,11 +1,13 @@
 package ejercicio1;
 
-public class DniInvalido extends NumberFormatException{
+import java.io.IOException;
+
+public class DniInvalido extends IOException{
 
     public DniInvalido() { }
 
     @Override
     public String getMessage() {
-        return "El DNI solo debe llevar números.";
+        return "El DNI solo debe llevar numeros.";
     }
 }
